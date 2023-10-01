@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Get BZ artifact from build
+    - name: Get artifact from build
       uses: dawidd6/action-download-artifact@v2
       with:
         workflow: build.yml
