@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Get BZ artifact from build
+    - name: Get artifact from build
       uses: dawidd6/action-download-artifact@v2
       with:
         workflow: build.yml
@@ -33,8 +33,9 @@ jobs:
       run: |
           cd Install/${{ matrix.configuration }}
           zip -r9 ../mod-and-deps-${{ matrix.configuration }}.zip *
-          zip -r9 ../mod-only-${{ matrix.configuration }}.zip  BepInEx/plugins/SCHIZO
-          cd ../Common
+          cd BepInEx/plugins
+          zip -r9 ../../../mod-only-${{ matrix.configuration }}.zip SCHIZO
+          cd ../../../Common
           zip -r9 ../mod-and-deps-${{ matrix.configuration }}.zip *
 
     - name: Update the release
