@@ -25,7 +25,7 @@ jobs:
 
     - name: Clean extracted artifact
       run: |
-        cd Install/BelowZero/BepInEx/plugins/SCHIZO
+        cd Install/${{ matrix.configuration }}/BepInEx/plugins/SCHIZO
         mv SCHIZO.dll.extracted/SCHIZO.dll SCHIZO.dll
         rm -rf SCHIZO.dll.extracted
 
