@@ -32,11 +32,14 @@ jobs:
     - name: Create release archive
       run: |
           cd Install/${{ matrix.configuration }}
-          zip -r9 ../release-${{ matrix.configuration }}.zip *
+          zip -r9 ../mod-and-deps-${{ matrix.configuration }}.zip *
+          zip -r9 ../mod-only-${{ matrix.configuration }}.zip  Install/$${{ matrix.configuration }}/BepInEx/plugins/SCHIZO
           cd ../Common
-          zip -r9 ../release-${{ matrix.configuration }}.zip *
+          zip -r9 ../mod-and-deps-${{ matrix.configuration }}.zip *
 
     - name: Update the release
       uses: softprops/action-gh-release@v1
       with:
-        files: Install/release-${{ matrix.configuration }}.zip
+        files: |
+          Install/mod-and-deps-${{ matrix.configuration }}.zip
+          Install/mod-only-${{ matrix.configuration }}.zip
