@@ -33,8 +33,9 @@ jobs:
       run: |
           cd Install/${{ matrix.configuration }}
           zip -r9 ../mod-and-deps-${{ matrix.configuration }}.zip *
-          zip -r9 ../mod-only-${{ matrix.configuration }}.zip  BepInEx/plugins/SCHIZO
-          cd ../Common
+          cd BepInEx/plugins
+          zip -r9 ../mod-only-${{ matrix.configuration }}.zip SCHIZO
+          cd ../../../Common
           zip -r9 ../mod-and-deps-${{ matrix.configuration }}.zip *
 
     - name: Update the release
